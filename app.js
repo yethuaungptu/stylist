@@ -4,6 +4,7 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const mongoose = require("mongoose");
+const session = require("express-session");
 
 var indexRouter = require("./routes/index");
 var adminRouter = require("./routes/admin");
@@ -23,6 +24,14 @@ app.use(express.static(path.join(__dirname, "public")));
 mongoose.connect("mongodb://127.0.0.1/stylishdb"); // studydb is anyname can insert
 var db = mongoose.connection;
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
+
+app.use(
+  session({
+    secret: "St!yl@lish!1012022", // any string for security
+    resave: false,
+    saveUninitialized: true,
+  })
+);
 
 app.use("/", indexRouter);
 app.use("/admin", adminRouter);
