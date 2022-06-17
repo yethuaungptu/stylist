@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets2/style.css" />
+  </head>
+  <body class="login-body">
+    <div class="container">
+      <div class="row p-5">
+        <div class="col-12 col-md-6 m-auto">
+          <div class="login-content shadow-lg p-5">
+            <div class="login-title">
+              <h2 class="fw-bold mb-3">Login</h2>
+              <p class="text-black-50">
+                Welcome back! Please login to your account.
+              </p>
+            </div>
+            <div class="login-form mt-4">
+              <form action="/login" method="post">
+                <div class="col-10 col-md-7">
+                  <div class="form-group mb-3">
+                    <label for="contact" class="form-label fw-bold"
+                      >User Name / Email</label
+                    >
+                    <input
+                      type="text"
+                      name="contact"
+                      id="contact"
+                      class="form-control shadow-lg border-0 rounded-pill p-2 ps-3 shadow-lg border-0 rounded-pill p-2 ps-3"
+                      placeholder="username@gmail.com"
+                    />
+                  </div>
+                </div>
+                <div class="col-10 col-md-7">
+                  <div class="form-group mb-3">
+                    <label for="password" class="form-label fw-bold"
+                      >Password</label
+                    >
+                    <input
+                      type="password"
+                      name="password"
+                      id="password"
+                      class="form-control shadow-lg border-0 rounded-pill p-2 ps-3"
+                      placeholder="********"
+                    />
+                  </div>
+                </div>
+                <div class="col-12 col-md-7 mt-4">
+                  <div class="form-check-inline">
+                    <input
+                      type="checkbox"
+                      name=""
+                      id=""
+                      class="form-check-input"
+                    />
+                    <label for="" class="form-check-label">Remember Me</label>
+                  </div>
+                  <label for="" class="login-forget float-end"
+                    ><a href="" class="anone">Forget Password?</a></label
+                  >
+                </div>
+                <div class="text-center col-12 col-md-7 mt-4">
+                  <button
+                    type="submit"
+                    class="login-btn form-control shadow-lg border-0 rounded-pill p-2 ps-3"
+                  >
+                    Login
+                  </button>
+                </div>
+                <div class="col-12 col-md-7 mt-4">
+                  <p>
+                    New user? <a href="/register" class="anone"> Signup.</a>
+                  </p>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
