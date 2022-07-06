@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  class="light-style layout-menu-fixed"
+  dir="ltr"
+  data-theme="theme-default"
+  data-assets-path="/assets/"
+  data-template="vertical-menu-template-free"
+>
+  <head>
+    <% include ../partialA/head %>
+  </head>
+
+  <body>
+    <!-- Layout wrapper -->
+    <div class="layout-wrapper layout-content-navbar">
+      <div class="layout-container">
+        <!-- Menu -->
+
+        <% include ../partialA/aside %>
+        <!-- / Menu -->
+
+        <!-- Layout container -->
+        <div class="layout-page">
+          <!-- Navbar -->
+
+          <% include ../partialA/nav %>
+
+          <!-- / Navbar -->
+
+          <!-- Content wrapper -->
+          <div class="content-wrapper">
+            <!-- Content -->
+
+            <div class="container-xxl flex-grow-1 container-p-y">
+              <div class="row">
+                <div class="card">
+                  <h5 class="card-header">Category List</h5>
+                  <div class="card-body">
+                    <div class="table-responsive text-nowrap">
+                      <table class="table table-bordered">
+                        <thead>
+                          <tr>
+                            <th>Name</th>
+                            <th>CreatedBy</th>
+                            <th>UpdatedBy</th>
+                            <th>Actions</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <% for(var i = 0; i < categories.length; i++){%>
+                          <tr>
+                            <td>
+                              <strong><%= categories[i].name %></strong>
+                            </td>
+                            <td><%= categories[i].createdBy.name %></td>
+                            <td><%= categories[i].updatedBy.name %></td>
+                            <td>
+                              <button
+                                class="btn btn-warning"
+                                onclick="updateModal('<%= categories[i]._id %>','<%= categories[i].name %>')"
+                                data-bs-toggle="modal"
+                                data-bs-target="#modalCenter"
+                              >
+                                Update
+                              </button>
+                              <button
+                                onclick="deleteModal('<%= categories[i]._id %>')"
+                                class="btn btn-danger"
+                              >
+                                Delete
+                              </button>
+                            </td>
+                          </tr>
+                          <%}%>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div
+                      class="modal fade"
+                      id="modalCenter"
+                      tabindex="-1"
+                      aria-hidden="true"
+                    >
+                      <div
+                        class="modal-dialog modal-dialog-centered"
+                        role="document"
+                      >
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="modalCenterTitle">
+                              Category Update
+                            </h5>
+                            <button
+                              type="button"
+                              class="btn-close"
+                              data-bs-dismiss="modal"
+                              aria-label="Close"
+                            ></button>
+                          </div>
+                          <div class="modal-body">
+                            <div class="row">
+                              <input type="hidden" name="uid" id="uid" />
+                              <div class="col mb-3">
+                                <label for="uname" class="form-label"
+                                  >Category Name</label
+                                >
+                                <input
+                                  type="text"
+                                  id="uname"
+                                  name="uname"
+                                  class="form-control"
+                                  placeholder="Enter Category Name"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button
+                              type="button"
+                              class="btn btn-outline-secondary"
+                              data-bs-dismiss="modal"
+                            >
+                              Close
+                            </button>
+                            <button
+                              type="button"
+                              id="saveCh"
+                              class="btn btn-primary"
+                            >
+                              Save changes
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="modal fade"
+                      id="smallModal"
+                      tabindex="-1"
+                      aria-hidden="true"
+                    >
+                      <div class="modal-dialog modal-sm" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel2">
+                              Delete Category
+                            </h5>
+                            <button
+                              type="button"
+                              class="btn-close"
+                              data-bs-dismiss="modal"
+                              aria-label="Close"
+                            ></button>
+                          </div>
+                          <div class="modal-body">
+                            <input type="hidden" name="did" id="did" />
+                            <div class="row">
+                              <h3>Are you sure for delete?</h3>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button
+                              type="button"
+                              class="btn btn-outline-secondary"
+                              data-bs-dismiss="modal"
+                            >
+                              Close
+                            </button>
+                            <button
+                              type="button"
+                              class="btn btn-danger"
+                              id="deleteAny"
+                            >
+                              Delete Anyway
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- / Content -->
+
+            <% include ../partialA/footer %>
+
+            <div class="content-backdrop fade"></div>
+          </div>
+          <!-- Content wrapper -->
+        </div>
+        <!-- / Layout page -->
+      </div>
+
+      <!-- Overlay -->
+      <div class="layout-overlay layout-menu-toggle"></div>
+    </div>
+    <!-- / Layout wrapper -->
+
+    <% include ../partialA/script %>
+  </body>
+  <script>
+    $modal = $("#modalCenter");
+    $modal2 = $("#smallModal");
+    function updateModal(id, name) {
+      $("#uname").val(name);
+      $("#uid").val(id);
+      $modal.modal("show");
+    }
+    function deleteModal(id) {
+      $("#did").val(id);
+      $modal2.modal("show");
+    }
+    $("#deleteAny").click(() => {
+      $modal2.modal("hide");
+      $.ajax("/admin/categorydelete", {
+        method: "POST",
+        data: { id: $("#did").val() },
+        success: function (result) {
+          if (result.status == "done") {
+            location.reload();
+          } else {
+            alert("Something was wrong, please check your fields");
+          }
+        },
+      });
+    });
+    $("#saveCh").click(() => {
+      $modal.modal("hide");
+      const updateD = { id: $("#uid").val(), name: $("#uname").val() };
+      $.ajax("/admin/categoryupdate", {
+        method: "POST",
+        data: updateD,
+        success: function (result) {
+          if (result.status == "done") {
+            location.reload();
+          } else {
+            alert("Something was wrong, please check your fields");
+          }
+        },
+      });
+    });
+  </script>
+</html>

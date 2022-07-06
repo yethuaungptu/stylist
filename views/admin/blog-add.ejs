@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  class="light-style layout-menu-fixed"
+  dir="ltr"
+  data-theme="theme-default"
+  data-assets-path="/assets/"
+  data-template="vertical-menu-template-free"
+>
+  <head>
+    <% include ../partialA/head %>
+  </head>
+
+  <body>
+    <!-- Layout wrapper -->
+    <div class="layout-wrapper layout-content-navbar">
+      <div class="layout-container">
+        <!-- Menu -->
+
+        <% include ../partialA/aside %>
+        <!-- / Menu -->
+
+        <!-- Layout container -->
+        <div class="layout-page">
+          <!-- Navbar -->
+
+          <% include ../partialA/nav %>
+
+          <!-- / Navbar -->
+
+          <!-- Content wrapper -->
+          <div class="content-wrapper">
+            <!-- Content -->
+
+            <div class="container-xxl container-p-y">
+              <div class="row mx-auto">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-6 col-md-4 order-1">
+                  <div class="row">
+                    <div class="col-xl">
+                      <div class="card mb-4">
+                        <div
+                          class="card-header d-flex justify-content-between align-items-center"
+                        >
+                          <h5 class="mb-0">Blog Add</h5>
+                        </div>
+                        <div class="card-body">
+                          <form
+                            action="/admin/blogadd"
+                            method="post"
+                            enctype="multipart/form-data"
+                          >
+                            <div class="mb-3">
+                              <label
+                                class="form-label"
+                                for="basic-icon-default-fullname"
+                                >Title</label
+                              >
+                              <div class="input-group input-group-merge">
+                                <span
+                                  id="basic-icon-default-fullname2"
+                                  class="input-group-text"
+                                  ><i class="bx bx-bookmark-heart"></i
+                                ></span>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="basic-icon-default-fullname"
+                                  placeholder="Blog Title"
+                                  aria-label="Blog Title"
+                                  name="title"
+                                  aria-describedby="basic-icon-default-fullname2"
+                                  required
+                                />
+                              </div>
+                            </div>
+                            <div class="mb-3">
+                              <label
+                                class="form-label"
+                                for="basic-icon-default-fullname"
+                                >Estimate Price</label
+                              >
+                              <div class="input-group input-group-merge">
+                                <span
+                                  id="basic-icon-default-fullname3"
+                                  class="input-group-text"
+                                  ><i class="bx bx-purchase-tag-alt"></i
+                                ></span>
+                                <input
+                                  type="number"
+                                  class="form-control"
+                                  id="basic-icon-default-fullname3"
+                                  placeholder="Estimate Price"
+                                  aria-label="Estimate Price"
+                                  name="price"
+                                  aria-describedby="basic-icon-default-fullname3"
+                                  required
+                                />
+                              </div>
+                            </div>
+                            <div class="mb-3">
+                              <label
+                                class="form-label"
+                                for="basic-icon-default-message"
+                                >Content</label
+                              >
+                              <div class="input-group input-group-merge">
+                                <span
+                                  id="basic-icon-default-message2"
+                                  class="input-group-text"
+                                  ><i class="bx bx-comment"></i
+                                ></span>
+                                <textarea
+                                  id="basic-icon-default-message"
+                                  class="form-control"
+                                  name="content"
+                                  placeholder="Please enter content"
+                                  aria-label="Please enter content"
+                                  aria-describedby="basic-icon-default-message2"
+                                  required
+                                ></textarea>
+                              </div>
+                            </div>
+                            <div class="mb-3">
+                              <label
+                                for="exampleFormControlSelect1"
+                                class="form-label"
+                                >Category</label
+                              >
+                              <select
+                                class="form-select"
+                                id="exampleFormControlSelect1"
+                                aria-label="Default select example"
+                                name="category"
+                                required
+                              >
+                                <% for(var i = 0; i < categories.length; i++){%>
+                                <option value="<%= categories[i]._id %>">
+                                  <%= categories[i].name %>
+                                </option>
+                                <%}%>
+                              </select>
+                            </div>
+                            <div class="mb-3">
+                              <label
+                                for="exampleFormControlSelect2"
+                                class="form-label"
+                                >Shop</label
+                              >
+                              <select
+                                class="form-select"
+                                id="exampleFormControlSelect2"
+                                aria-label="Default select example"
+                                name="shop"
+                                required
+                              >
+                                <% for(var i = 0; i < shops.length; i++){%>
+                                <option value="<%= shops[i]._id %>">
+                                  <%= shops[i].name %>
+                                </option>
+                                <%}%>
+                              </select>
+                            </div>
+                            <div class="mb-3">
+                              <label
+                                for="exampleFormControlSelect3"
+                                class="form-label"
+                                >Age Arrange</label
+                              >
+                              <select
+                                class="form-select"
+                                id="exampleFormControlSelect3"
+                                aria-label="Default select example"
+                                name="ageArrange"
+                                required
+                              >
+                                <option value="kid">Kid</option>
+                                <option value="teenager">Teenager</option>
+                                <option value="young">Young</option>
+                                <option value="adult">Adult</option>
+                                <option value="old">Old</option>
+                              </select>
+                            </div>
+                            <div class="mb-3">
+                              <label
+                                for="exampleFormControlSelect4"
+                                class="form-label"
+                                >BMI</label
+                              >
+                              <select
+                                class="form-select"
+                                id="exampleFormControlSelect4"
+                                aria-label="Default select example"
+                                name="bmi"
+                                required
+                              >
+                                <option value="Underweight">Underweight</option>
+                                <option value="Healthy">Healthy</option>
+                                <option value="Overweight">Overweight</option>
+                                <option value="Obese">Obese</option>
+                              </select>
+                            </div>
+                            <div class="mb-3">
+                              <label
+                                for="exampleFormControlSelect5"
+                                class="form-label"
+                                >Size</label
+                              >
+                              <select
+                                class="form-select"
+                                id="exampleFormControlSelect5"
+                                aria-label="Default select example"
+                                name="size"
+                                required
+                              >
+                                <option value="sm">SM</option>
+                                <option value="m">M</option>
+                                <option value="l">L</option>
+                                <option value="xl">XL</option>
+                                <option value="xxl">XXL</option>
+                                <option value="free">Free</option>
+                              </select>
+                            </div>
+                            <div class="mb-3">
+                              <label
+                                for="exampleFormControlSelect6"
+                                class="form-label"
+                                >Gender</label
+                              >
+                              <select
+                                class="form-select"
+                                id="exampleFormControlSelect6"
+                                aria-label="Default select example"
+                                name="gender"
+                                required
+                              >
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="all">ALL</option>
+                              </select>
+                            </div>
+                            <div class="mb-3">
+                              <label for="formFile" class="form-label"
+                                >Main Image</label
+                              >
+                              <input
+                                class="form-control"
+                                type="file"
+                                id="formFile"
+                                name="mainImg"
+                                required
+                              />
+                            </div>
+                            <div class="mb-3">
+                              <label for="formFile2" class="form-label"
+                                >More Image</label
+                              >
+                              <input
+                                class="form-control"
+                                type="file"
+                                id="formFile2"
+                                name="moreImg"
+                                multiple
+                                required
+                              />
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                              Send
+                            </button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- / Content -->
+
+            <% include ../partialA/footer %>
+
+            <div class="content-backdrop fade"></div>
+          </div>
+          <!-- Content wrapper -->
+        </div>
+        <!-- / Layout page -->
+      </div>
+
+      <!-- Overlay -->
+      <div class="layout-overlay layout-menu-toggle"></div>
+    </div>
+    <!-- / Layout wrapper -->
+
+    <% include ../partialA/script %>
+  </body>
+  <script>
+    $("#formFile2").on("change", function () {
+      if ($("#formFile2")[0].files.length > 3) {
+        alert("You can select only 3 images");
+        $("#formFile2").val("");
+      }
+    });
+  </script>
+</html>

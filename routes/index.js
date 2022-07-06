@@ -1,10 +1,37 @@
 var express = require("express");
 var router = express.Router();
 const User = require("../models/User");
+const Category = require("../models/Category");
+const Blog = require("../models/Blog");
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
-  res.render("index", { title: "Express" });
+  Category.find({ isDeleted: "0" })
+    .select("_id name")
+    .exec((err, rtn) => {
+      if (err) throw err;
+      Blog.aggregate([
+        {
+          $match: { isDeleted: "0" },
+        },
+        {
+          $group: {
+            _id: { categoryId: "$categoryId" },
+            data: {
+              $push: { id: "$_id", title: "$title", mainImg: "$mainImg" },
+            },
+          },
+        },
+      ]).exec((err2, rtn2) => {
+        if (err2) throw err2;
+        console.log(rtn2[1]);
+        res.render("index", {
+          title: "Express",
+          category: rtn,
+          collection: rtn2,
+        });
+      });
+    });
 });
 
 router.get("/register", (req, res) => {

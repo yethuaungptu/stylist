@@ -26,6 +26,22 @@ var ShopSchema = new Schema({
     type: String,
     default: "0", // 0 is normal, 1 is deleted
   },
+  createdBy: {
+    type: Schema.Types.ObjectId,
+    ref: "Admins",
+  },
+  updatedBy: {
+    type: Schema.Types.ObjectId,
+    ref: "Admins",
+  },
+  created: {
+    type: Date,
+    default: Date.now(),
+  },
+  updated: {
+    type: Date,
+    default: Date.now(),
+  },
 });
 
 module.exports = mongoose.model("Shops", ShopSchema);

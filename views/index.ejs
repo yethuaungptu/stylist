@@ -7,17 +7,23 @@
     <title>Fashion</title>
     <link rel="stylesheet" href="/assets2/style.css" />
     <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="/vendor/feather-icons-web/feather.css" />
+    <link rel="stylesheet" href="/vendor/slick/slick.css" />
+    <link rel="stylesheet" href="/vendor/slick/slick-theme.css" />
+    <link rel="stylesheet" href="/vendor/remi/fonts/remixicon.css" />
+    <link rel="stylesheet" href="/vendor/animate_it/animate.css" />
   </head>
   <body>
     <!-- start header -->
-    <header class="container-fluid">
+    <header class="container-fluid site-nav wow animate__slideInDown">
       <div class="container">
         <div class="row">
           <div class="col-12">
             <nav class="navbar navbar-expand-lg navbar-light">
               <div class="container-fluid">
-                <a class="navbar-brand" href="#">Navbar</a>
+                <a class="navbar-brand fw-bolder h1" href="/">
+                  <img src="/images/ys.png" class="site-logo" alt="" />Your
+                  Stylist</a
+                >
                 <button
                   class="navbar-toggler"
                   type="button"
@@ -27,7 +33,7 @@
                   aria-expanded="false"
                   aria-label="Toggle navigation"
                 >
-                  <i class="feather-menu menu-icon text-primary"></i>
+                  <i class="ri-menu-3-line menu-icon"></i>
                 </button>
                 <div
                   class="collapse navbar-collapse justify-content-end"
@@ -35,35 +41,42 @@
                 >
                   <ul class="navbar-nav mb-2 mb-lg-0">
                     <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" href="#"
-                        >Men</a
+                      <a
+                        class="nav-link text-uppercase current-section"
+                        aria-current="page"
+                        href="index.html"
+                        >Home</a
                       >
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link text-uppercase" href="#">Women</a>
+                      <a class="nav-link text-uppercase" href="men.html">Men</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link text-uppercase" href="#">Kids</a>
+                      <a class="nav-link text-uppercase" href="women.html"
+                        >Women</a
+                      >
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link text-uppercase" href="#"
+                      <a class="nav-link text-uppercase" href="kid.html"
+                        >Kids</a
+                      >
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link text-uppercase" href="collection.html"
                         >Collections</a
                       >
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link text-uppercase" href="#">Trends</a>
+                      <a class="nav-link text-uppercase" href="shop.html"
+                        >Shops</a
+                      >
                     </li>
                     <li class="nav-item ms-5">
                       <a
-                        class="nav-link btn btn-primary text-white"
+                        class="nav-link btn btn-primary bg-white text-dark border-0 shadow-lg"
                         href="/login"
                         >Login</a
                       >
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="user_profile.html"
-                        ><img src="/assets2/img/2.jpg" class="profile" alt=""
-                      /></a>
                     </li>
                   </ul>
                 </div>
@@ -77,9 +90,13 @@
     <!-- start home -->
     <section id="home" class="home container-fluid">
       <div class="container">
-        <div class="row min-vh-100 align-items-center justify-content-center">
+        <div
+          class="row min-vh-100 align-items-center justify-content-center flex-column-reverse flex-md-row"
+        >
           <div class="col-12 col-md-7 d-flex justify-content-center">
-            <div class="home-left">
+            <div
+              class="home-left mt-5 pt-5 mt-md-0 pt-md-0 wow animate__slideInLeft"
+            >
               <div class="text-capitalize">
                 <h3 class="h1">
                   find the best <br />
@@ -95,12 +112,16 @@
                 </p>
               </div>
               <div class="mt-3">
-                <a href="" class="btn btn-primary">SHOP NOW</a>
+                <a
+                  href=""
+                  class="btn shadow-lg bg-white p-2 btn-size wow animate__slideInUp"
+                  >SHOP NOW</a
+                >
               </div>
             </div>
           </div>
           <div class="col-12 col-md-5">
-            <div class="home-right">
+            <div class="home-right wow animate__slideInUp">
               <img src="/assets2/img/4.jpg" alt="" />
             </div>
           </div>
@@ -109,29 +130,40 @@
     </section>
     <!-- end home -->
     <!-- start collection -->
-    <section class="collection container-fluid" id="collection">
+    <section class="collection container-fluid mt-5" id="collection">
       <div class="row">
         <div class="col-12 text-center">
-          <div class="">
-            <h3 class="mb-3">Our Collections</h3>
+          <div class="text-color wow animate__slideOutDown">
+            <h1 class="mb-3">Our Collections</h1>
             <div class="">
               <ul class="coll-tab d-flex justify-content-center">
-                <li class="m-3 coll-tab-item active" data-target="#winter">
-                  Winter
+                <% for(var i = 0; i < category.length; i++){%>
+                <li
+                  class="m-3 coll-tab-item <%= i == 0 ? 'active':''%>"
+                  data-target="#tab<%= i%>"
+                >
+                  <%= category[i].name %>
                 </li>
-                <li class="m-3 coll-tab-item" data-target="#summer">Summer</li>
+                <%}%>
+                <!-- <li class="m-3 coll-tab-item" data-target="#summer">Summer</li>
                 <li class="m-3 coll-tab-item" data-target="#rainy">Rainy</li>
                 <li class="m-3 coll-tab-item" data-target="#office">Office</li>
-                <li class="m-3 coll-tab-item" data-target="#free">Free</li>
+                <li class="m-3 coll-tab-item" data-target="#free">Free</li> -->
               </ul>
             </div>
           </div>
         </div>
         <div class="col-12 coll-section">
-          <div class="coll-tab-content active" id="winter">
+          <% for(var j = 0; j < category.length; j++){%>
+          <div
+            class="coll-tab-content <%= j == 0 ? 'active':''%>"
+            id="tab<%= j%>"
+          >
             <div class="container p-md-5">
               <div class="row">
-                <div class="col-12 col-md-4 p-md-5">
+                <div
+                  class="col-12 wow animate__bounceOut col-xl-4 col-md-6 p-xl-5 p-md-4 mb-5 mb-md-0"
+                >
                   <div class="card shadow-lg border-0">
                     <div class="coll-img col-12">
                       <img src="/assets2/img/3.jpg" alt="" />
@@ -139,13 +171,15 @@
                     <div class="text-center coll-footer">Free</div>
                     <div class="coll-price">
                       <div class="coll-price-img">
-                        <i class="feather-heart h5"></i>
-                        <i class="feather-bookmark h5"></i>
+                        <i class="ri-heart-3-line icon-heart"></i>
+                        <i class="ri-bookmark-line icon-save"></i>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="col-12 col-md-4 p-md-5">
+                <!-- <div
+                  class="col-12 wow animate__bounceOut col-xl-4 col-md-6 p-xl-5 p-md-4 mb-5 mb-md-0"
+                >
                   <div class="card shadow-lg border-0">
                     <div class="coll-img col-12">
                       <img src="/assets2/img/3.jpg" alt="" />
@@ -153,13 +187,15 @@
                     <div class="text-center coll-footer">Free</div>
                     <div class="coll-price">
                       <div class="coll-price-img">
-                        <i class="feather-heart h5"></i>
-                        <i class="feather-bookmark h5"></i>
+                        <i class="ri-heart-3-line icon-heart"></i>
+                        <i class="ri-bookmark-line icon-save"></i>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="col-12 col-md-4 p-md-5">
+                <div
+                  class="col-12 wow animate__bounceOut col-xl-4 col-md-6 p-xl-5 p-md-4 mb-5 mb-md-0"
+                >
                   <div class="card shadow-lg border-0">
                     <div class="coll-img col-12">
                       <img src="/assets2/img/3.jpg" alt="" />
@@ -167,14 +203,16 @@
                     <div class="text-center coll-footer">Free</div>
                     <div class="coll-price">
                       <div class="coll-price-img">
-                        <i class="feather-heart h5"></i>
-                        <i class="feather-bookmark h5"></i>
+                        <i class="ri-heart-3-line icon-heart"></i>
+                        <i class="ri-bookmark-line icon-save"></i>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <div class="col-12 col-md-4 p-md-5">
+                <div
+                  class="col-12 wow animate__bounceOut col-xl-4 col-md-6 p-xl-5 p-md-4 mb-5 mb-md-0"
+                >
                   <div class="card shadow-lg border-0">
                     <div class="coll-img col-12">
                       <img src="/assets2/img/3.jpg" alt="" />
@@ -182,13 +220,15 @@
                     <div class="text-center coll-footer">Free</div>
                     <div class="coll-price">
                       <div class="coll-price-img">
-                        <i class="feather-heart h5"></i>
-                        <i class="feather-bookmark h5"></i>
+                        <i class="ri-heart-3-line icon-heart"></i>
+                        <i class="ri-bookmark-line icon-save"></i>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="col-12 col-md-4 p-md-5">
+                <div
+                  class="col-12 wow animate__bounceOut col-xl-4 col-md-6 p-xl-5 p-md-4 mb-5 mb-md-0"
+                >
                   <div class="card shadow-lg border-0">
                     <div class="coll-img col-12">
                       <img src="/assets2/img/3.jpg" alt="" />
@@ -196,13 +236,15 @@
                     <div class="text-center coll-footer">Free</div>
                     <div class="coll-price">
                       <div class="coll-price-img">
-                        <i class="feather-heart h5"></i>
-                        <i class="feather-bookmark h5"></i>
+                        <i class="ri-heart-3-line icon-heart"></i>
+                        <i class="ri-bookmark-line icon-save"></i>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="col-12 col-md-4 p-md-5">
+                <div
+                  class="col-12 wow animate__bounceOut col-xl-4 col-md-6 p-xl-5 p-md-4 mb-5 mb-md-0"
+                >
                   <div class="card shadow-lg border-0">
                     <div class="coll-img col-12">
                       <img src="/assets2/img/3.jpg" alt="" />
@@ -210,19 +252,22 @@
                     <div class="text-center coll-footer">Free</div>
                     <div class="coll-price">
                       <div class="coll-price-img">
-                        <i class="feather-heart h5"></i>
-                        <i class="feather-bookmark h5"></i>
+                        <i class="ri-heart-3-line icon-heart"></i>
+                        <i class="ri-bookmark-line icon-save"></i>
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>
-          <div class="coll-tab-content" id="summer">
+          <%}%>
+          <!-- <div class="coll-tab-content" id="summer">
             <div class="container p-md-5">
               <div class="row">
-                <div class="col-12 col-md-4 p-md-5">
+                <div
+                  class="col-12 wow animate__bounceOut col-xl-4 col-md-6 p-xl-5 p-md-4 mb-5 mb-md-0"
+                >
                   <div class="card shadow-lg border-0">
                     <div class="coll-img col-12">
                       <img src="/assets2/img/3.jpg" alt="" />
@@ -230,13 +275,15 @@
                     <div class="text-center coll-footer">Free</div>
                     <div class="coll-price">
                       <div class="coll-price-img">
-                        <i class="feather-heart h5"></i>
-                        <i class="feather-bookmark h5"></i>
+                        <i class="ri-heart-3-line icon-heart"></i>
+                        <i class="ri-bookmark-line icon-save"></i>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="col-12 col-md-4 p-md-5">
+                <div
+                  class="col-12 wow animate__bounceOut col-xl-4 col-md-6 p-xl-5 p-md-4 mb-5 mb-md-0"
+                >
                   <div class="card shadow-lg border-0">
                     <div class="coll-img col-12">
                       <img src="/assets2/img/3.jpg" alt="" />
@@ -244,13 +291,15 @@
                     <div class="text-center coll-footer">Free</div>
                     <div class="coll-price">
                       <div class="coll-price-img">
-                        <i class="feather-heart h5"></i>
-                        <i class="feather-bookmark h5"></i>
+                        <i class="ri-heart-3-line icon-heart"></i>
+                        <i class="ri-bookmark-line icon-save"></i>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="col-12 col-md-4 p-md-5">
+                <div
+                  class="col-12 wow animate__bounceOut col-xl-4 col-md-6 p-xl-5 p-md-4 mb-5 mb-md-0"
+                >
                   <div class="card shadow-lg border-0">
                     <div class="coll-img col-12">
                       <img src="/assets2/img/3.jpg" alt="" />
@@ -258,8 +307,8 @@
                     <div class="text-center coll-footer">Free</div>
                     <div class="coll-price">
                       <div class="coll-price-img">
-                        <i class="feather-heart h5"></i>
-                        <i class="feather-bookmark h5"></i>
+                        <i class="ri-heart-3-line icon-heart"></i>
+                        <i class="ri-bookmark-line icon-save"></i>
                       </div>
                     </div>
                   </div>
@@ -271,7 +320,9 @@
           <div class="coll-tab-content" id="rainy">
             <div class="container p-md-5">
               <div class="row">
-                <div class="col-12 col-md-4 p-md-5">
+                <div
+                  class="col-12 wow animate__bounceOut col-xl-4 col-md-6 p-xl-5 p-md-4 mb-5 mb-md-0"
+                >
                   <div class="card shadow-lg border-0">
                     <div class="coll-img col-12">
                       <img src="/assets2/img/3.jpg" alt="" />
@@ -279,13 +330,15 @@
                     <div class="text-center coll-footer">Free</div>
                     <div class="coll-price">
                       <div class="coll-price-img">
-                        <i class="feather-heart h5"></i>
-                        <i class="feather-bookmark h5"></i>
+                        <i class="ri-heart-3-line icon-heart"></i>
+                        <i class="ri-bookmark-line icon-save"></i>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="col-12 col-md-4 p-md-5">
+                <div
+                  class="col-12 wow animate__bounceOut col-xl-4 col-md-6 p-xl-5 p-md-4 mb-5 mb-md-0"
+                >
                   <div class="card shadow-lg border-0">
                     <div class="coll-img col-12">
                       <img src="/assets2/img/3.jpg" alt="" />
@@ -293,13 +346,15 @@
                     <div class="text-center coll-footer">Free</div>
                     <div class="coll-price">
                       <div class="coll-price-img">
-                        <i class="feather-heart h5"></i>
-                        <i class="feather-bookmark h5"></i>
+                        <i class="ri-heart-3-line icon-heart"></i>
+                        <i class="ri-bookmark-line icon-save"></i>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="col-12 col-md-4 p-md-5">
+                <div
+                  class="col-12 wow animate__bounceOut col-xl-4 col-md-6 p-xl-5 p-md-4 mb-5 mb-md-0"
+                >
                   <div class="card shadow-lg border-0">
                     <div class="coll-img col-12">
                       <img src="/assets2/img/3.jpg" alt="" />
@@ -307,8 +362,57 @@
                     <div class="text-center coll-footer">Free</div>
                     <div class="coll-price">
                       <div class="coll-price-img">
-                        <i class="feather-heart h5"></i>
-                        <i class="feather-bookmark h5"></i>
+                        <i class="ri-heart-3-line icon-heart"></i>
+                        <i class="ri-bookmark-line icon-save"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="col-12 wow animate__bounceOut col-xl-4 col-md-6 p-xl-5 p-md-4 mb-5 mb-md-0"
+                >
+                  <div class="card shadow-lg border-0">
+                    <div class="coll-img col-12">
+                      <img src="/assets2/img/3.jpg" alt="" />
+                    </div>
+                    <div class="text-center coll-footer">Free</div>
+                    <div class="coll-price">
+                      <div class="coll-price-img">
+                        <i class="ri-heart-3-line icon-heart"></i>
+                        <i class="ri-bookmark-line icon-save"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="col-12 wow animate__bounceOut col-xl-4 col-md-6 p-xl-5 p-md-4 mb-5 mb-md-0"
+                >
+                  <div class="card shadow-lg border-0">
+                    <div class="coll-img col-12">
+                      <img src="/assets2/img/3.jpg" alt="" />
+                    </div>
+                    <div class="text-center coll-footer">Free</div>
+                    <div class="coll-price">
+                      <div class="coll-price-img">
+                        <i class="ri-heart-3-line icon-heart"></i>
+                        <i class="ri-bookmark-line icon-save"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="col-12 wow animate__bounceOut col-xl-4 col-md-6 p-xl-5 p-md-4 mb-5 mb-md-0"
+                >
+                  <div class="card shadow-lg border-0">
+                    <div class="coll-img col-12">
+                      <img src="/assets2/img/3.jpg" alt="" />
+                    </div>
+                    <div class="text-center coll-footer">Free</div>
+                    <div class="coll-price">
+                      <div class="coll-price-img">
+                        <i class="ri-heart-3-line icon-heart"></i>
+                        <i class="ri-bookmark-line icon-save"></i>
                       </div>
                     </div>
                   </div>
@@ -319,7 +423,9 @@
           <div class="coll-tab-content" id="office">
             <div class="container p-md-5">
               <div class="row">
-                <div class="col-12 col-md-4 p-md-5">
+                <div
+                  class="col-12 wow animate__bounceOut col-xl-4 col-md-6 p-xl-5 p-md-4 mb-5 mb-md-0"
+                >
                   <div class="card shadow-lg border-0">
                     <div class="coll-img col-12">
                       <img src="/assets2/img/3.jpg" alt="" />
@@ -327,13 +433,15 @@
                     <div class="text-center coll-footer">Free</div>
                     <div class="coll-price">
                       <div class="coll-price-img">
-                        <i class="feather-heart h5"></i>
-                        <i class="feather-bookmark h5"></i>
+                        <i class="ri-heart-3-line icon-heart"></i>
+                        <i class="ri-bookmark-line icon-save"></i>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="col-12 col-md-4 p-md-5">
+                <div
+                  class="col-12 wow animate__bounceOut col-xl-4 col-md-6 p-xl-5 p-md-4 mb-5 mb-md-0"
+                >
                   <div class="card shadow-lg border-0">
                     <div class="coll-img col-12">
                       <img src="/assets2/img/3.jpg" alt="" />
@@ -341,13 +449,15 @@
                     <div class="text-center coll-footer">Free</div>
                     <div class="coll-price">
                       <div class="coll-price-img">
-                        <i class="feather-heart h5"></i>
-                        <i class="feather-bookmark h5"></i>
+                        <i class="ri-heart-3-line icon-heart"></i>
+                        <i class="ri-bookmark-line icon-save"></i>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="col-12 col-md-4 p-md-5">
+                <div
+                  class="col-12 wow animate__bounceOut col-xl-4 col-md-6 p-xl-5 p-md-4 mb-5 mb-md-0"
+                >
                   <div class="card shadow-lg border-0">
                     <div class="coll-img col-12">
                       <img src="/assets2/img/3.jpg" alt="" />
@@ -355,8 +465,8 @@
                     <div class="text-center coll-footer">Free</div>
                     <div class="coll-price">
                       <div class="coll-price-img">
-                        <i class="feather-heart h5"></i>
-                        <i class="feather-bookmark h5"></i>
+                        <i class="ri-heart-3-line icon-heart"></i>
+                        <i class="ri-bookmark-line icon-save"></i>
                       </div>
                     </div>
                   </div>
@@ -367,7 +477,9 @@
           <div class="coll-tab-content" id="free">
             <div class="container p-md-5">
               <div class="row">
-                <div class="col-12 col-md-4 p-md-5">
+                <div
+                  class="col-12 wow animate__bounceOut col-xl-4 col-md-6 p-xl-5 p-md-4 mb-5 mb-md-0"
+                >
                   <div class="card shadow-lg border-0">
                     <div class="coll-img col-12">
                       <img src="/assets2/img/3.jpg" alt="" />
@@ -375,13 +487,15 @@
                     <div class="text-center coll-footer">Free</div>
                     <div class="coll-price">
                       <div class="coll-price-img">
-                        <i class="feather-heart h5"></i>
-                        <i class="feather-bookmark h5"></i>
+                        <i class="ri-heart-3-line icon-heart"></i>
+                        <i class="ri-bookmark-line icon-save"></i>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="col-12 col-md-4 p-md-5">
+                <div
+                  class="col-12 wow animate__bounceOut col-xl-4 col-md-6 p-xl-5 p-md-4 mb-5 mb-md-0"
+                >
                   <div class="card shadow-lg border-0">
                     <div class="coll-img col-12">
                       <img src="/assets2/img/3.jpg" alt="" />
@@ -389,13 +503,15 @@
                     <div class="text-center coll-footer">Free</div>
                     <div class="coll-price">
                       <div class="coll-price-img">
-                        <i class="feather-heart h5"></i>
-                        <i class="feather-bookmark h5"></i>
+                        <i class="ri-heart-3-line icon-heart"></i>
+                        <i class="ri-bookmark-line icon-save"></i>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="col-12 col-md-4 p-md-5">
+                <div
+                  class="col-12 wow animate__bounceOut col-xl-4 col-md-6 p-xl-5 p-md-4 mb-5 mb-md-0"
+                >
                   <div class="card shadow-lg border-0">
                     <div class="coll-img col-12">
                       <img src="/assets2/img/3.jpg" alt="" />
@@ -403,9 +519,56 @@
                     <div class="text-center coll-footer">Free</div>
                     <div class="coll-price">
                       <div class="coll-price-img">
-                        <i class="feather-heart h5"></i>
-                        <i class="feather-bookmark h5"></i>
+                        <i class="ri-heart-3-line icon-heart"></i>
+                        <i class="ri-bookmark-line icon-save"></i>
                       </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </section>
+    <!-- end collection -->
+    <!-- start best fashion -->
+    <section class="container-fluid best-fashion mt-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-md-6 col-xl-6">
+            <div class="best-left m-auto wow animate__fadeInUp">
+              <img src="/assets2/img/1.jpg" alt="" />
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-xl-6 d-flex justify-content-center">
+            <div class="best-right">
+              <div class="text-capitalize">
+                <h3 class="h1 text-color">Best fashion <br />Since 2021</h3>
+              </div>
+              <div class="mt-3 text-black-50">
+                <p class="best-justify">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Laudantium magnam praesentium sed delectus aliquid minima
+                  repellendus excepturi. Nemo.adipisicing elit. Laudantium
+                  magnam praesentium aliquid minima repellendus repellendus
+                  excepturnima repellendus excepturi.
+                </p>
+              </div>
+              <div class="col-xl-5 col-md-7 best-found wow animate__zoomIn">
+                <div class="card p-3 border-0 shadow-lg">
+                  <div class="row container text-center">
+                    <div class="col-4">
+                      <p class="h4 fw-bolder">2021</p>
+                      <p class="mb-0">Founded</p>
+                    </div>
+                    <div class="col-4">
+                      <p class="h4 fw-bolder">200+</p>
+                      <p class="mb-0">Users</p>
+                    </div>
+                    <div class="col-4">
+                      <p class="h4 fw-bolder">100+</p>
+                      <p class="mb-0">Best Review</p>
                     </div>
                   </div>
                 </div>
@@ -415,12 +578,346 @@
         </div>
       </div>
     </section>
-    <!-- end collection -->
-    <!-- start best fashion -->
-
     <!-- end best fashion -->
+    <!-- start popular product -->
+    <section class="container-fluid popular mb-5">
+      <div class="container px-5">
+        <div class="row">
+          <div class="col-12 col-xl-6 col-md-6">
+            <div class="col-xl-8 m-lg-auto w-100 popular-text text-center mb-5">
+              <div class="text-capitalize mb-5">
+                <h3 class="h1 fw-bolder text-white wow animate__slideInLeft">
+                  Popular Products
+                </h3>
+              </div>
+              <div class="mt-3 text-white-50 text-start lh-lg">
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Laudantium magnam praesentium sed delectus aliquid minima
+                  repellendus excepturi. Nemo, cupiditate.Laudantium magnam
+                  praesentium sed delectus.
+                </p>
+              </div>
+              <div class="mt-3">
+                <a
+                  href=""
+                  class="btn btn-primary border-0 shadow-lg bg-white text-dark p-2 wow animate__slideInRight"
+                  >SEE MORE</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-xl-6 col-md-6">
+            <div class="col-12">
+              <div class="row popular-slick">
+                <div class="col-xl-4 p-xl-4 p-lg-4 p-md-2 p-0">
+                  <div class="card">
+                    <div class="popular-img">
+                      <img
+                        src="/assets2/img/beautiful-woman-face-hand-make-up_1150-13083.webp"
+                        alt=""
+                      />
+                    </div>
+                    <div class="card-footer text-center bg-white border-0">
+                      <p class="mb-0">Dress</p>
+                      <p class="mb-0">$120</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-4 p-xl-4 p-lg-4 p-md-2 p-0">
+                  <div class="card">
+                    <div class="popular-img">
+                      <img src="/assets2/img/y.jpg" alt="" />
+                    </div>
+                    <div class="card-footer text-center bg-white border-0">
+                      <p class="mb-0">Dress</p>
+                      <p class="mb-0">$120</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-4 p-xl-4 p-lg-4 p-md-2 p-0">
+                  <div class="card">
+                    <div class="popular-img">
+                      <img
+                        src="/assets2/img/beautiful-woman-face-hand-make-up_1150-13083.webp"
+                        alt=""
+                      />
+                    </div>
+                    <div class="card-footer text-center bg-white border-0">
+                      <p class="mb-0">Dress</p>
+                      <p class="mb-0">$120</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-4 p-xl-4 p-lg-4 p-md-2 p-0">
+                  <div class="card">
+                    <div class="popular-img">
+                      <img
+                        src="/assets2/img/beautiful-woman-face-hand-make-up_1150-13083.webp"
+                        alt=""
+                      />
+                    </div>
+                    <div class="card-footer text-center bg-white border-0">
+                      <p class="mb-0">Dress</p>
+                      <p class="mb-0">$120</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-4 p-xl-4 p-lg-4 p-md-2 p-0">
+                  <div class="card">
+                    <div class="popular-img">
+                      <img src="/assets2/img/y.jpg" alt="" />
+                    </div>
+                    <div class="card-footer text-center bg-white border-0">
+                      <p class="mb-0">Dress</p>
+                      <p class="mb-0">$120</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-4 p-xl-4 p-lg-4 p-md-2 p-0">
+                  <div class="card">
+                    <div class="popular-img">
+                      <img
+                        src="/assets2/img/beautiful-woman-face-hand-make-up_1150-13083.webp"
+                        alt=""
+                      />
+                    </div>
+                    <div class="card-footer text-center bg-white border-0">
+                      <p class="mb-0">Dress</p>
+                      <p class="mb-0">$120</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- end popular product -->
+    <!-- start trending -->
+    <section class="container-fluid trending">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="text-center wow animate__slideInDown">
+              <div class="h1 text-color">Trendings</div>
+            </div>
+            <div class="container-fluid p-md-5">
+              <div class="row trending-slick">
+                <div class="col-md-4 col-12 col-xl-3 p-md-2">
+                  <div class="card p-xl-5 p-lg-5 p-md-4 mb-5 mb-md-0 border-0">
+                    <img src="/assets2/img/4.jpg" alt="" />
+                    <div class="card-footer">
+                      <p class="h5">Sweater</p>
+                      <div class="">
+                        <i class="ri-star-fill text-warning"></i>
+                        <i class="ri-star-fill text-warning"></i>
+                        <i class="ri-star-line text-warning"></i>
+                        <i class="ri-star-line text-warning"></i>
+                      </div>
+                      <p>$200</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-4 col-12 col-xl-3 p-md-2">
+                  <div class="card p-xl-5 p-lg-5 p-md-4 border-0">
+                    <img src="/assets2/img/4.jpg" alt="" />
+                    <div class="card-footer">
+                      <p class="h5">Sweater</p>
+                      <div class="">
+                        <i class="ri-star-fill text-warning"></i>
+                        <i class="ri-star-fill text-warning"></i>
+                        <i class="ri-star-line text-warning"></i>
+                        <i class="ri-star-line text-warning"></i>
+                      </div>
+                      <p>$200</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-4 col-12 col-xl-3 p-md-2">
+                  <div class="card p-xl-5 p-lg-5 p-md-4 border-0">
+                    <img src="/assets2/img/4.jpg" alt="" />
+                    <div class="card-footer">
+                      <p class="h5">Sweater</p>
+                      <div class="">
+                        <i class="ri-star-fill text-warning"></i>
+                        <i class="ri-star-fill text-warning"></i>
+                        <i class="ri-star-line text-warning"></i>
+                        <i class="ri-star-line text-warning"></i>
+                      </div>
+                      <p>$200</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-4 col-12 col-xl-3 p-md-2">
+                  <div class="card p-xl-5 p-lg-5 p-md-4 border-0">
+                    <img src="/assets2/img/4.jpg" alt="" />
+                    <div class="card-footer">
+                      <p class="h5">Sweater</p>
+                      <div class="">
+                        <i class="ri-star-fill text-warning"></i>
+                        <i class="ri-star-fill text-warning"></i>
+                        <i class="ri-star-line text-warning"></i>
+                        <i class="ri-star-line text-warning"></i>
+                      </div>
+                      <p>$200</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-4 col-12 col-xl-3 p-md-2">
+                  <div class="card p-xl-5 p-lg-5 p-md-4 border-0">
+                    <img src="/assets2/img/4.jpg" alt="" />
+                    <div class="card-footer">
+                      <p class="h5">Sweater</p>
+                      <div class="">
+                        <i class="ri-star-fill text-warning"></i>
+                        <i class="ri-star-fill text-warning"></i>
+                        <i class="ri-star-line text-warning"></i>
+                        <i class="ri-star-line text-warning"></i>
+                      </div>
+                      <p>$200</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-4 col-12 col-xl-3 p-md-2">
+                  <div class="card p-xl-5 p-lg-5 p-md-4 border-0">
+                    <img src="/assets2/img/4.jpg" alt="" />
+                    <div class="card-footer">
+                      <p class="h5">Sweater</p>
+                      <div class="">
+                        <i class="ri-star-fill text-warning"></i>
+                        <i class="ri-star-fill text-warning"></i>
+                        <i class="ri-star-line text-warning"></i>
+                        <i class="ri-star-line text-warning"></i>
+                      </div>
+                      <p>$200</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-4 col-12 col-xl-3 p-md-2">
+                  <div class="card p-xl-5 p-lg-5 p-md-4 border-0">
+                    <img src="/assets2/img/4.jpg" alt="" />
+                    <div class="card-footer">
+                      <p class="h5">Sweater</p>
+                      <div class="">
+                        <i class="ri-star-fill text-warning"></i>
+                        <i class="ri-star-fill text-warning"></i>
+                        <i class="ri-star-line text-warning"></i>
+                        <i class="ri-star-line text-warning"></i>
+                      </div>
+                      <p>$200</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-4 col-12 col-xl-3 p-md-2">
+                  <div class="card p-xl-5 p-lg-5 p-md-4 border-0">
+                    <img src="/assets2/img/4.jpg" alt="" />
+                    <div class="card-footer">
+                      <p class="h5">Sweater</p>
+                      <div class="">
+                        <i class="ri-star-fill text-warning"></i>
+                        <i class="ri-star-fill text-warning"></i>
+                        <i class="ri-star-line text-warning"></i>
+                        <i class="ri-star-line text-warning"></i>
+                      </div>
+                      <p>$200</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-4 col-12 col-xl-3 p-md-2">
+                  <div class="card p-xl-5 p-lg-5 p-md-4 border-0">
+                    <img src="/assets2/img/4.jpg" alt="" />
+                    <div class="card-footer">
+                      <p class="h5">Sweater</p>
+                      <div class="">
+                        <i class="ri-star-fill text-warning"></i>
+                        <i class="ri-star-fill text-warning"></i>
+                        <i class="ri-star-line text-warning"></i>
+                        <i class="ri-star-line text-warning"></i>
+                      </div>
+                      <p>$200</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-4 col-12 col-xl-3 p-md-2">
+                  <div class="card p-xl-5 p-lg-5 p-md-4 border-0">
+                    <img src="/assets2/img/4.jpg" alt="" />
+                    <div class="card-footer">
+                      <p class="h5">Sweater</p>
+                      <div class="">
+                        <i class="ri-star-fill text-warning"></i>
+                        <i class="ri-star-fill text-warning"></i>
+                        <i class="ri-star-line text-warning"></i>
+                        <i class="ri-star-line text-warning"></i>
+                      </div>
+                      <p>$200</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- end trending -->
+    <!-- start collection img -->
+    <section class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="collection-img d-flex">
+            <img src="/assets2/img/2.jpg" class="col-2" alt="" />
+            <img src="/assets2/img/3.jpg" class="col-2" alt="" />
+            <img src="/assets2/img/2.jpg" class="col-2" alt="" />
+            <img src="/assets2/img/1.jpg" class="col-2" alt="" />
+            <img src="/assets2/img/4.jpg" class="col-2" alt="" />
+            <img src="/assets2/img/y.jpg" class="col-2" alt="" />
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- end collection img -->
+    <!-- start footer -->
+    <footer class="container-fluid footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-5 col-md-6 m-auto">
+            <ul class="d-flex justify-content-around text-white">
+              <li class="text-uppercase">men</li>
+              <li class="text-uppercase">women</li>
+              <li class="text-uppercase">kids</li>
+              <li class="text-uppercase">collection</li>
+              <li class="text-uppercase">Shop</li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <p class="text-center fs-6 fw-bolder">
+              &copy;Fashion. All Right Reserved.
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <a href="#" class="scroll-up anone" id="scroll-up">
+      <i class="ri-arrow-up-line scroll-icon"></i>
+    </a>
+    <!-- end footer -->
   </body>
   <script src="/vendor/jQuery/jquery.min.js"></script>
   <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+  <script src="/vendor/slick/slick.min.js"></script>
+  <script src="/vendor/wow/wow.js"></script>
   <script src="/assets2/app.js"></script>
 </html>

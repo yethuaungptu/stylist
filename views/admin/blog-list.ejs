@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  class="light-style layout-menu-fixed"
+  dir="ltr"
+  data-theme="theme-default"
+  data-assets-path="/assets/"
+  data-template="vertical-menu-template-free"
+>
+  <head>
+    <% include ../partialA/head %>
+  </head>
+
+  <body>
+    <!-- Layout wrapper -->
+    <div class="layout-wrapper layout-content-navbar">
+      <div class="layout-container">
+        <!-- Menu -->
+
+        <% include ../partialA/aside %>
+        <!-- / Menu -->
+
+        <!-- Layout container -->
+        <div class="layout-page">
+          <!-- Navbar -->
+
+          <% include ../partialA/nav %>
+
+          <!-- / Navbar -->
+
+          <!-- Content wrapper -->
+          <div class="content-wrapper">
+            <!-- Content -->
+
+            <div class="container-xxl flex-grow-1 container-p-y">
+              <div class="row">
+                <div class="card">
+                  <h5 class="card-header">Blog List</h5>
+                  <div class="card-body">
+                    <div class="table-responsive text-nowrap">
+                      <table class="table table-bordered">
+                        <thead>
+                          <tr>
+                            <th>Title</th>
+                            <th>Category</th>
+                            <th>CreatedBy</th>
+                            <th>UpdatedBy</th>
+                            <th>Actions</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <% for(var i = 0; i < blogs.length; i++){%>
+                          <tr>
+                            <td>
+                              <strong><%= blogs[i].title %></strong>
+                            </td>
+                            <td><%= blogs[i].categoryId.name %></td>
+                            <td><%= blogs[i].createdBy.name %></td>
+                            <td><%= blogs[i].updatedBy.name %></td>
+                            <td>
+                              <a
+                                href="/admin/blogdetail/<%= blogs[i]._id %>"
+                                class="btn btn-primary"
+                              >
+                                More Details
+                              </a>
+                            </td>
+                          </tr>
+                          <%}%>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- / Content -->
+
+            <% include ../partialA/footer %>
+
+            <div class="content-backdrop fade"></div>
+          </div>
+          <!-- Content wrapper -->
+        </div>
+        <!-- / Layout page -->
+      </div>
+
+      <!-- Overlay -->
+      <div class="layout-overlay layout-menu-toggle"></div>
+    </div>
+    <!-- / Layout wrapper -->
+
+    <% include ../partialA/script %>
+  </body>
+</html>
