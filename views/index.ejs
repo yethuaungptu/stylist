@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fashion</title>
+    <title>Your Stylist</title>
     <link rel="stylesheet" href="/assets2/style.css" />
     <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/vendor/slick/slick.css" />
@@ -44,33 +44,34 @@
                       <a
                         class="nav-link text-uppercase current-section"
                         aria-current="page"
-                        href="index.html"
+                        href="/"
                         >Home</a
                       >
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link text-uppercase" href="men.html">Men</a>
+                      <a class="nav-link text-uppercase" href="/men">Men</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link text-uppercase" href="women.html"
-                        >Women</a
-                      >
+                      <a class="nav-link text-uppercase" href="/women">Women</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link text-uppercase" href="kid.html"
-                        >Kids</a
-                      >
+                      <a class="nav-link text-uppercase" href="/kids">Kids</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link text-uppercase" href="collection.html"
+                      <a class="nav-link text-uppercase" href="/collections"
                         >Collections</a
                       >
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link text-uppercase" href="shop.html"
-                        >Shops</a
+                      <a class="nav-link text-uppercase" href="/shops">Shops</a>
+                    </li>
+                    <% if(locals.user){%>
+                    <li class="nav-item">
+                      <a class="nav-link text-uppercase" href="/myprofile"
+                        >My Profile</a
                       >
                     </li>
+                    <%}%>
                     <li class="nav-item ms-5">
                       <a
                         class="nav-link btn btn-primary bg-white text-dark border-0 shadow-lg"
@@ -106,9 +107,11 @@
               </div>
               <div class="mt-3 text-black-50">
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Laudantium magnam praesentium sed delectus aliquid minima
-                  repellendus excepturi. Nemo, cupiditate.
+                  If you want to have confidence in your style, you have to be
+                  comfortable with that outfit. If you feel satisfied in what
+                  your wear so that it can be the best fashion style for you.
+                  Fashion has the ability to contribute confidence and
+                  self-esteem on a daily basis. Thus, fashion really matters.
                 </p>
               </div>
               <div class="mt-3">
@@ -161,373 +164,28 @@
           >
             <div class="container p-md-5">
               <div class="row">
+                <% let current = collection.filter(che); function che(value){
+                return value._id.categoryId.toString() ==
+                category[j]._id.toString()} %> <% if(current.length > 0){
+                for(var k = 0; k < current[0].data.length; k++){ if(k == 6)
+                break;%>
                 <div
                   class="col-12 wow animate__bounceOut col-xl-4 col-md-6 p-xl-5 p-md-4 mb-5 mb-md-0"
                 >
                   <div class="card shadow-lg border-0">
                     <div class="coll-img col-12">
-                      <img src="/assets2/img/3.jpg" alt="" />
+                      <img src="<%= current[0].data[k].mainImg %>" alt="" />
                     </div>
-                    <div class="text-center coll-footer">Free</div>
-                    <div class="coll-price">
-                      <div class="coll-price-img">
-                        <i class="ri-heart-3-line icon-heart"></i>
-                        <i class="ri-bookmark-line icon-save"></i>
-                      </div>
+                    <div class="text-center coll-footer">
+                      <%= current[0].data[k].title %>
                     </div>
                   </div>
                 </div>
-                <!-- <div
-                  class="col-12 wow animate__bounceOut col-xl-4 col-md-6 p-xl-5 p-md-4 mb-5 mb-md-0"
-                >
-                  <div class="card shadow-lg border-0">
-                    <div class="coll-img col-12">
-                      <img src="/assets2/img/3.jpg" alt="" />
-                    </div>
-                    <div class="text-center coll-footer">Free</div>
-                    <div class="coll-price">
-                      <div class="coll-price-img">
-                        <i class="ri-heart-3-line icon-heart"></i>
-                        <i class="ri-bookmark-line icon-save"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="col-12 wow animate__bounceOut col-xl-4 col-md-6 p-xl-5 p-md-4 mb-5 mb-md-0"
-                >
-                  <div class="card shadow-lg border-0">
-                    <div class="coll-img col-12">
-                      <img src="/assets2/img/3.jpg" alt="" />
-                    </div>
-                    <div class="text-center coll-footer">Free</div>
-                    <div class="coll-price">
-                      <div class="coll-price-img">
-                        <i class="ri-heart-3-line icon-heart"></i>
-                        <i class="ri-bookmark-line icon-save"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div
-                  class="col-12 wow animate__bounceOut col-xl-4 col-md-6 p-xl-5 p-md-4 mb-5 mb-md-0"
-                >
-                  <div class="card shadow-lg border-0">
-                    <div class="coll-img col-12">
-                      <img src="/assets2/img/3.jpg" alt="" />
-                    </div>
-                    <div class="text-center coll-footer">Free</div>
-                    <div class="coll-price">
-                      <div class="coll-price-img">
-                        <i class="ri-heart-3-line icon-heart"></i>
-                        <i class="ri-bookmark-line icon-save"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="col-12 wow animate__bounceOut col-xl-4 col-md-6 p-xl-5 p-md-4 mb-5 mb-md-0"
-                >
-                  <div class="card shadow-lg border-0">
-                    <div class="coll-img col-12">
-                      <img src="/assets2/img/3.jpg" alt="" />
-                    </div>
-                    <div class="text-center coll-footer">Free</div>
-                    <div class="coll-price">
-                      <div class="coll-price-img">
-                        <i class="ri-heart-3-line icon-heart"></i>
-                        <i class="ri-bookmark-line icon-save"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="col-12 wow animate__bounceOut col-xl-4 col-md-6 p-xl-5 p-md-4 mb-5 mb-md-0"
-                >
-                  <div class="card shadow-lg border-0">
-                    <div class="coll-img col-12">
-                      <img src="/assets2/img/3.jpg" alt="" />
-                    </div>
-                    <div class="text-center coll-footer">Free</div>
-                    <div class="coll-price">
-                      <div class="coll-price-img">
-                        <i class="ri-heart-3-line icon-heart"></i>
-                        <i class="ri-bookmark-line icon-save"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div> -->
+                <%}}%>
               </div>
             </div>
           </div>
           <%}%>
-          <!-- <div class="coll-tab-content" id="summer">
-            <div class="container p-md-5">
-              <div class="row">
-                <div
-                  class="col-12 wow animate__bounceOut col-xl-4 col-md-6 p-xl-5 p-md-4 mb-5 mb-md-0"
-                >
-                  <div class="card shadow-lg border-0">
-                    <div class="coll-img col-12">
-                      <img src="/assets2/img/3.jpg" alt="" />
-                    </div>
-                    <div class="text-center coll-footer">Free</div>
-                    <div class="coll-price">
-                      <div class="coll-price-img">
-                        <i class="ri-heart-3-line icon-heart"></i>
-                        <i class="ri-bookmark-line icon-save"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="col-12 wow animate__bounceOut col-xl-4 col-md-6 p-xl-5 p-md-4 mb-5 mb-md-0"
-                >
-                  <div class="card shadow-lg border-0">
-                    <div class="coll-img col-12">
-                      <img src="/assets2/img/3.jpg" alt="" />
-                    </div>
-                    <div class="text-center coll-footer">Free</div>
-                    <div class="coll-price">
-                      <div class="coll-price-img">
-                        <i class="ri-heart-3-line icon-heart"></i>
-                        <i class="ri-bookmark-line icon-save"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="col-12 wow animate__bounceOut col-xl-4 col-md-6 p-xl-5 p-md-4 mb-5 mb-md-0"
-                >
-                  <div class="card shadow-lg border-0">
-                    <div class="coll-img col-12">
-                      <img src="/assets2/img/3.jpg" alt="" />
-                    </div>
-                    <div class="text-center coll-footer">Free</div>
-                    <div class="coll-price">
-                      <div class="coll-price-img">
-                        <i class="ri-heart-3-line icon-heart"></i>
-                        <i class="ri-bookmark-line icon-save"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="coll-tab-content" id="rainy">
-            <div class="container p-md-5">
-              <div class="row">
-                <div
-                  class="col-12 wow animate__bounceOut col-xl-4 col-md-6 p-xl-5 p-md-4 mb-5 mb-md-0"
-                >
-                  <div class="card shadow-lg border-0">
-                    <div class="coll-img col-12">
-                      <img src="/assets2/img/3.jpg" alt="" />
-                    </div>
-                    <div class="text-center coll-footer">Free</div>
-                    <div class="coll-price">
-                      <div class="coll-price-img">
-                        <i class="ri-heart-3-line icon-heart"></i>
-                        <i class="ri-bookmark-line icon-save"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="col-12 wow animate__bounceOut col-xl-4 col-md-6 p-xl-5 p-md-4 mb-5 mb-md-0"
-                >
-                  <div class="card shadow-lg border-0">
-                    <div class="coll-img col-12">
-                      <img src="/assets2/img/3.jpg" alt="" />
-                    </div>
-                    <div class="text-center coll-footer">Free</div>
-                    <div class="coll-price">
-                      <div class="coll-price-img">
-                        <i class="ri-heart-3-line icon-heart"></i>
-                        <i class="ri-bookmark-line icon-save"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="col-12 wow animate__bounceOut col-xl-4 col-md-6 p-xl-5 p-md-4 mb-5 mb-md-0"
-                >
-                  <div class="card shadow-lg border-0">
-                    <div class="coll-img col-12">
-                      <img src="/assets2/img/3.jpg" alt="" />
-                    </div>
-                    <div class="text-center coll-footer">Free</div>
-                    <div class="coll-price">
-                      <div class="coll-price-img">
-                        <i class="ri-heart-3-line icon-heart"></i>
-                        <i class="ri-bookmark-line icon-save"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div
-                  class="col-12 wow animate__bounceOut col-xl-4 col-md-6 p-xl-5 p-md-4 mb-5 mb-md-0"
-                >
-                  <div class="card shadow-lg border-0">
-                    <div class="coll-img col-12">
-                      <img src="/assets2/img/3.jpg" alt="" />
-                    </div>
-                    <div class="text-center coll-footer">Free</div>
-                    <div class="coll-price">
-                      <div class="coll-price-img">
-                        <i class="ri-heart-3-line icon-heart"></i>
-                        <i class="ri-bookmark-line icon-save"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="col-12 wow animate__bounceOut col-xl-4 col-md-6 p-xl-5 p-md-4 mb-5 mb-md-0"
-                >
-                  <div class="card shadow-lg border-0">
-                    <div class="coll-img col-12">
-                      <img src="/assets2/img/3.jpg" alt="" />
-                    </div>
-                    <div class="text-center coll-footer">Free</div>
-                    <div class="coll-price">
-                      <div class="coll-price-img">
-                        <i class="ri-heart-3-line icon-heart"></i>
-                        <i class="ri-bookmark-line icon-save"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="col-12 wow animate__bounceOut col-xl-4 col-md-6 p-xl-5 p-md-4 mb-5 mb-md-0"
-                >
-                  <div class="card shadow-lg border-0">
-                    <div class="coll-img col-12">
-                      <img src="/assets2/img/3.jpg" alt="" />
-                    </div>
-                    <div class="text-center coll-footer">Free</div>
-                    <div class="coll-price">
-                      <div class="coll-price-img">
-                        <i class="ri-heart-3-line icon-heart"></i>
-                        <i class="ri-bookmark-line icon-save"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="coll-tab-content" id="office">
-            <div class="container p-md-5">
-              <div class="row">
-                <div
-                  class="col-12 wow animate__bounceOut col-xl-4 col-md-6 p-xl-5 p-md-4 mb-5 mb-md-0"
-                >
-                  <div class="card shadow-lg border-0">
-                    <div class="coll-img col-12">
-                      <img src="/assets2/img/3.jpg" alt="" />
-                    </div>
-                    <div class="text-center coll-footer">Free</div>
-                    <div class="coll-price">
-                      <div class="coll-price-img">
-                        <i class="ri-heart-3-line icon-heart"></i>
-                        <i class="ri-bookmark-line icon-save"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="col-12 wow animate__bounceOut col-xl-4 col-md-6 p-xl-5 p-md-4 mb-5 mb-md-0"
-                >
-                  <div class="card shadow-lg border-0">
-                    <div class="coll-img col-12">
-                      <img src="/assets2/img/3.jpg" alt="" />
-                    </div>
-                    <div class="text-center coll-footer">Free</div>
-                    <div class="coll-price">
-                      <div class="coll-price-img">
-                        <i class="ri-heart-3-line icon-heart"></i>
-                        <i class="ri-bookmark-line icon-save"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="col-12 wow animate__bounceOut col-xl-4 col-md-6 p-xl-5 p-md-4 mb-5 mb-md-0"
-                >
-                  <div class="card shadow-lg border-0">
-                    <div class="coll-img col-12">
-                      <img src="/assets2/img/3.jpg" alt="" />
-                    </div>
-                    <div class="text-center coll-footer">Free</div>
-                    <div class="coll-price">
-                      <div class="coll-price-img">
-                        <i class="ri-heart-3-line icon-heart"></i>
-                        <i class="ri-bookmark-line icon-save"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="coll-tab-content" id="free">
-            <div class="container p-md-5">
-              <div class="row">
-                <div
-                  class="col-12 wow animate__bounceOut col-xl-4 col-md-6 p-xl-5 p-md-4 mb-5 mb-md-0"
-                >
-                  <div class="card shadow-lg border-0">
-                    <div class="coll-img col-12">
-                      <img src="/assets2/img/3.jpg" alt="" />
-                    </div>
-                    <div class="text-center coll-footer">Free</div>
-                    <div class="coll-price">
-                      <div class="coll-price-img">
-                        <i class="ri-heart-3-line icon-heart"></i>
-                        <i class="ri-bookmark-line icon-save"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="col-12 wow animate__bounceOut col-xl-4 col-md-6 p-xl-5 p-md-4 mb-5 mb-md-0"
-                >
-                  <div class="card shadow-lg border-0">
-                    <div class="coll-img col-12">
-                      <img src="/assets2/img/3.jpg" alt="" />
-                    </div>
-                    <div class="text-center coll-footer">Free</div>
-                    <div class="coll-price">
-                      <div class="coll-price-img">
-                        <i class="ri-heart-3-line icon-heart"></i>
-                        <i class="ri-bookmark-line icon-save"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="col-12 wow animate__bounceOut col-xl-4 col-md-6 p-xl-5 p-md-4 mb-5 mb-md-0"
-                >
-                  <div class="card shadow-lg border-0">
-                    <div class="coll-img col-12">
-                      <img src="/assets2/img/3.jpg" alt="" />
-                    </div>
-                    <div class="text-center coll-footer">Free</div>
-                    <div class="coll-price">
-                      <div class="coll-price-img">
-                        <i class="ri-heart-3-line icon-heart"></i>
-                        <i class="ri-bookmark-line icon-save"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> -->
         </div>
       </div>
     </section>
@@ -544,31 +202,33 @@
           <div class="col-12 col-md-6 col-xl-6 d-flex justify-content-center">
             <div class="best-right">
               <div class="text-capitalize">
-                <h3 class="h1 text-color">Best fashion <br />Since 2021</h3>
+                <h3 class="h1 text-color">Best fashion <br />Since 2022</h3>
               </div>
               <div class="mt-3 text-black-50">
                 <p class="best-justify">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Laudantium magnam praesentium sed delectus aliquid minima
-                  repellendus excepturi. Nemo.adipisicing elit. Laudantium
-                  magnam praesentium aliquid minima repellendus repellendus
-                  excepturnima repellendus excepturi.
+                  Fashion is a form of expression. As a way to express
+                  personality and style, fashion plays an important role in our
+                  life. What a person chooses to wear can reflect their
+                  personality or interest. So it is critical that choosing a
+                  good outfit idea considerably according to different
+                  occasions. Therefore, you all can inspire the best fashion
+                  style via our website.
                 </p>
               </div>
               <div class="col-xl-5 col-md-7 best-found wow animate__zoomIn">
                 <div class="card p-3 border-0 shadow-lg">
                   <div class="row container text-center">
                     <div class="col-4">
-                      <p class="h4 fw-bolder">2021</p>
+                      <p class="h4 fw-bolder">2022</p>
                       <p class="mb-0">Founded</p>
                     </div>
                     <div class="col-4">
-                      <p class="h4 fw-bolder">200+</p>
+                      <p class="h4 fw-bolder"><%= userCount %>+</p>
                       <p class="mb-0">Users</p>
                     </div>
                     <div class="col-4">
-                      <p class="h4 fw-bolder">100+</p>
-                      <p class="mb-0">Best Review</p>
+                      <p class="h4 fw-bolder"><%= viewCount[0].count %></p>
+                      <p class="mb-0">Total View</p>
                     </div>
                   </div>
                 </div>
@@ -592,10 +252,12 @@
               </div>
               <div class="mt-3 text-white-50 text-start lh-lg">
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Laudantium magnam praesentium sed delectus aliquid minima
-                  repellendus excepturi. Nemo, cupiditate.Laudantium magnam
-                  praesentium sed delectus.
+                  Everybody will find what is the most popular outfit ideas
+                  after watching at this point. There are many latest designs
+                  and trendy clothes here. Good fashion style represents what
+                  you want to be and who you are. Hence, fashion is important in
+                  society and the best way to enjoy fashion is to wear what you
+                  love.
                 </p>
               </div>
               <div class="mt-3">
@@ -610,84 +272,19 @@
           <div class="col-12 col-xl-6 col-md-6">
             <div class="col-12">
               <div class="row popular-slick">
+                <% for(var i = 0; i < populars.length; i ++){%>
                 <div class="col-xl-4 p-xl-4 p-lg-4 p-md-2 p-0">
                   <div class="card">
                     <div class="popular-img">
-                      <img
-                        src="/assets2/img/beautiful-woman-face-hand-make-up_1150-13083.webp"
-                        alt=""
-                      />
+                      <img src="<%= populars[i].mainImg %>" alt="" />
                     </div>
                     <div class="card-footer text-center bg-white border-0">
-                      <p class="mb-0">Dress</p>
-                      <p class="mb-0">$120</p>
+                      <p class="mb-0"><%= populars[i].title %></p>
+                      <p class="mb-0"><%= populars[i].estPrice %> MMK</p>
                     </div>
                   </div>
                 </div>
-                <div class="col-xl-4 p-xl-4 p-lg-4 p-md-2 p-0">
-                  <div class="card">
-                    <div class="popular-img">
-                      <img src="/assets2/img/y.jpg" alt="" />
-                    </div>
-                    <div class="card-footer text-center bg-white border-0">
-                      <p class="mb-0">Dress</p>
-                      <p class="mb-0">$120</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-xl-4 p-xl-4 p-lg-4 p-md-2 p-0">
-                  <div class="card">
-                    <div class="popular-img">
-                      <img
-                        src="/assets2/img/beautiful-woman-face-hand-make-up_1150-13083.webp"
-                        alt=""
-                      />
-                    </div>
-                    <div class="card-footer text-center bg-white border-0">
-                      <p class="mb-0">Dress</p>
-                      <p class="mb-0">$120</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-xl-4 p-xl-4 p-lg-4 p-md-2 p-0">
-                  <div class="card">
-                    <div class="popular-img">
-                      <img
-                        src="/assets2/img/beautiful-woman-face-hand-make-up_1150-13083.webp"
-                        alt=""
-                      />
-                    </div>
-                    <div class="card-footer text-center bg-white border-0">
-                      <p class="mb-0">Dress</p>
-                      <p class="mb-0">$120</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-xl-4 p-xl-4 p-lg-4 p-md-2 p-0">
-                  <div class="card">
-                    <div class="popular-img">
-                      <img src="/assets2/img/y.jpg" alt="" />
-                    </div>
-                    <div class="card-footer text-center bg-white border-0">
-                      <p class="mb-0">Dress</p>
-                      <p class="mb-0">$120</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-xl-4 p-xl-4 p-lg-4 p-md-2 p-0">
-                  <div class="card">
-                    <div class="popular-img">
-                      <img
-                        src="/assets2/img/beautiful-woman-face-hand-make-up_1150-13083.webp"
-                        alt=""
-                      />
-                    </div>
-                    <div class="card-footer text-center bg-white border-0">
-                      <p class="mb-0">Dress</p>
-                      <p class="mb-0">$120</p>
-                    </div>
-                  </div>
-                </div>
+                <%}%>
               </div>
             </div>
           </div>
@@ -705,165 +302,18 @@
             </div>
             <div class="container-fluid p-md-5">
               <div class="row trending-slick">
+                <% for(var i = 0; i < trending.length; i++){%>
                 <div class="col-md-4 col-12 col-xl-3 p-md-2">
                   <div class="card p-xl-5 p-lg-5 p-md-4 mb-5 mb-md-0 border-0">
-                    <img src="/assets2/img/4.jpg" alt="" />
+                    <img src="<%= trending[i].mainImg %>" alt="" />
                     <div class="card-footer">
-                      <p class="h5">Sweater</p>
-                      <div class="">
-                        <i class="ri-star-fill text-warning"></i>
-                        <i class="ri-star-fill text-warning"></i>
-                        <i class="ri-star-line text-warning"></i>
-                        <i class="ri-star-line text-warning"></i>
-                      </div>
-                      <p>$200</p>
-                    </div>
-                  </div>
-                </div>
+                      <p class="h5"><%= trending[i].title %></p>
 
-                <div class="col-md-4 col-12 col-xl-3 p-md-2">
-                  <div class="card p-xl-5 p-lg-5 p-md-4 border-0">
-                    <img src="/assets2/img/4.jpg" alt="" />
-                    <div class="card-footer">
-                      <p class="h5">Sweater</p>
-                      <div class="">
-                        <i class="ri-star-fill text-warning"></i>
-                        <i class="ri-star-fill text-warning"></i>
-                        <i class="ri-star-line text-warning"></i>
-                        <i class="ri-star-line text-warning"></i>
-                      </div>
-                      <p>$200</p>
+                      <p><%= trending[i].estPrice %> MMK</p>
                     </div>
                   </div>
                 </div>
-
-                <div class="col-md-4 col-12 col-xl-3 p-md-2">
-                  <div class="card p-xl-5 p-lg-5 p-md-4 border-0">
-                    <img src="/assets2/img/4.jpg" alt="" />
-                    <div class="card-footer">
-                      <p class="h5">Sweater</p>
-                      <div class="">
-                        <i class="ri-star-fill text-warning"></i>
-                        <i class="ri-star-fill text-warning"></i>
-                        <i class="ri-star-line text-warning"></i>
-                        <i class="ri-star-line text-warning"></i>
-                      </div>
-                      <p>$200</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-md-4 col-12 col-xl-3 p-md-2">
-                  <div class="card p-xl-5 p-lg-5 p-md-4 border-0">
-                    <img src="/assets2/img/4.jpg" alt="" />
-                    <div class="card-footer">
-                      <p class="h5">Sweater</p>
-                      <div class="">
-                        <i class="ri-star-fill text-warning"></i>
-                        <i class="ri-star-fill text-warning"></i>
-                        <i class="ri-star-line text-warning"></i>
-                        <i class="ri-star-line text-warning"></i>
-                      </div>
-                      <p>$200</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-md-4 col-12 col-xl-3 p-md-2">
-                  <div class="card p-xl-5 p-lg-5 p-md-4 border-0">
-                    <img src="/assets2/img/4.jpg" alt="" />
-                    <div class="card-footer">
-                      <p class="h5">Sweater</p>
-                      <div class="">
-                        <i class="ri-star-fill text-warning"></i>
-                        <i class="ri-star-fill text-warning"></i>
-                        <i class="ri-star-line text-warning"></i>
-                        <i class="ri-star-line text-warning"></i>
-                      </div>
-                      <p>$200</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-md-4 col-12 col-xl-3 p-md-2">
-                  <div class="card p-xl-5 p-lg-5 p-md-4 border-0">
-                    <img src="/assets2/img/4.jpg" alt="" />
-                    <div class="card-footer">
-                      <p class="h5">Sweater</p>
-                      <div class="">
-                        <i class="ri-star-fill text-warning"></i>
-                        <i class="ri-star-fill text-warning"></i>
-                        <i class="ri-star-line text-warning"></i>
-                        <i class="ri-star-line text-warning"></i>
-                      </div>
-                      <p>$200</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-md-4 col-12 col-xl-3 p-md-2">
-                  <div class="card p-xl-5 p-lg-5 p-md-4 border-0">
-                    <img src="/assets2/img/4.jpg" alt="" />
-                    <div class="card-footer">
-                      <p class="h5">Sweater</p>
-                      <div class="">
-                        <i class="ri-star-fill text-warning"></i>
-                        <i class="ri-star-fill text-warning"></i>
-                        <i class="ri-star-line text-warning"></i>
-                        <i class="ri-star-line text-warning"></i>
-                      </div>
-                      <p>$200</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-md-4 col-12 col-xl-3 p-md-2">
-                  <div class="card p-xl-5 p-lg-5 p-md-4 border-0">
-                    <img src="/assets2/img/4.jpg" alt="" />
-                    <div class="card-footer">
-                      <p class="h5">Sweater</p>
-                      <div class="">
-                        <i class="ri-star-fill text-warning"></i>
-                        <i class="ri-star-fill text-warning"></i>
-                        <i class="ri-star-line text-warning"></i>
-                        <i class="ri-star-line text-warning"></i>
-                      </div>
-                      <p>$200</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-md-4 col-12 col-xl-3 p-md-2">
-                  <div class="card p-xl-5 p-lg-5 p-md-4 border-0">
-                    <img src="/assets2/img/4.jpg" alt="" />
-                    <div class="card-footer">
-                      <p class="h5">Sweater</p>
-                      <div class="">
-                        <i class="ri-star-fill text-warning"></i>
-                        <i class="ri-star-fill text-warning"></i>
-                        <i class="ri-star-line text-warning"></i>
-                        <i class="ri-star-line text-warning"></i>
-                      </div>
-                      <p>$200</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-md-4 col-12 col-xl-3 p-md-2">
-                  <div class="card p-xl-5 p-lg-5 p-md-4 border-0">
-                    <img src="/assets2/img/4.jpg" alt="" />
-                    <div class="card-footer">
-                      <p class="h5">Sweater</p>
-                      <div class="">
-                        <i class="ri-star-fill text-warning"></i>
-                        <i class="ri-star-fill text-warning"></i>
-                        <i class="ri-star-line text-warning"></i>
-                        <i class="ri-star-line text-warning"></i>
-                      </div>
-                      <p>$200</p>
-                    </div>
-                  </div>
-                </div>
+                <%}%>
               </div>
             </div>
           </div>

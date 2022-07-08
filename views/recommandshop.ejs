@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/vendor/remi/fonts/remixicon.css" />
+    <link rel="stylesheet" href="/vendor/slick/slick.css" />
+    <link rel="stylesheet" href="/vendor/slick/slick-theme.css" />
+    <link rel="stylesheet" href="/assets2/style.css" />
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row mt-5">
+        <div class="col-md-4 col-xl-2 d-xl-block d-md-none d-none user-sidebar">
+          <div class="card shadow-lg border-0">
+            <a href="/" class="float-end m-2 mb-0 p-2 anone">
+              <i class="ri-home-7-line h4 text-danger"></i>
+            </a>
+            <div class="text-center mb-5 pt-5">
+              <img
+                src="<%= user.gender == 'male' ? '/assets2/img/yb2.jpg':'/assets2/img/1.jpg' %>"
+                class="profile-img"
+                alt=""
+              />
+            </div>
+            <div class="text-center">
+              <p class="h4 text-color"><%= user.name %></p>
+            </div>
+            <a
+              href="/myprofile"
+              class="btn btn-outline-danger col-11 m-auto border-start-0 border-end-0 border-bottom-0 my-2"
+              >For you</a
+            >
+            <a
+              href="/editmyprofile"
+              class="btn btn-outline-danger col-11 m-auto border-start-0 border-end-0 border-bottom-0 mb-2"
+              >User Information</a
+            >
+            <a
+              href="/recomandshop"
+              class="btn btn-outline-danger col-11 m-auto border-start-0 border-end-0 border-bottom-0 mb-2"
+              >Recomanded Shop</a
+            >
+            <a
+              href="/logout"
+              class="btn btn-outline-danger col-11 m-auto border-start-0 border-end-0 mb-2"
+              >Logout</a
+            >
+          </div>
+        </div>
+        <div class="col-12 col-md-12 col-xl-9 p-md-0 user-content scroll">
+          <div class="toggle d-inline d-xl-none">
+            <span class="anone">
+              <i class="ri-menu-2-fill user-menu-icon h2"></i>
+            </span>
+          </div>
+          <!-- start content -->
+          <div class="container-fluid">
+            <div class="container">
+              <div class="row shop">
+                <% for(var i = 0; i < shops.length; i++){%>
+                <div class="col-lg-4 col-md-6">
+                  <div class="card shadow-lg m-2 p-4 border-0">
+                    <div
+                      class="card-body d-flex justify-content-between align-items-center"
+                    >
+                      <div class="shop-img mb-0">
+                        <img src="<%= shops[i].pfUrl %>" alt="" />
+                      </div>
+                      <div class="p-3">
+                        <h4 class="text-color"><%= shops[i].name %></h4>
+                        <p class="text-black-50"><%= shops[i].address %></p>
+                      </div>
+                      <div class="shop-icon">
+                        <a href="/shopdetail/<%= shops[i]._id %>" class="anone"
+                          ><i class="ri ri-arrow-right-fill"></i
+                        ></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <%}%>
+              </div>
+            </div>
+          </div>
+          <!-- end content -->
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="/vendor/bootstrap/css/bootstrap.min.css"></script>
+  <script src="/vendor/jQuery/jquery.min.js"></script>
+  <script src="/vendor/slick/slick.min.js"></script>
+  <script src="/assets2/app.js"></script>
+</html>
