@@ -227,7 +227,9 @@
                       <p class="mb-0">Users</p>
                     </div>
                     <div class="col-4">
-                      <p class="h4 fw-bolder"><%= viewCount[0].count %></p>
+                      <p class="h4 fw-bolder">
+                        <%= viewCount[0]? viewCount[0].count: '0' %>
+                      </p>
                       <p class="mb-0">Total View</p>
                     </div>
                   </div>
