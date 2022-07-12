@@ -212,7 +212,7 @@ $(".popular-slick").slick({
         arrows: false,
         // centerMode: true,
         centerPadding: "10px",
-        slidesToShow: 1,
+        slidesToShow: 2,
       },
     },
     {
