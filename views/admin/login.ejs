@@ -161,7 +161,7 @@
                       <input
                         class="form-check-input"
                         type="checkbox"
-                        id="remember-me"
+                        id="rememberMe"
                       />
                       <label class="form-check-label" for="remember-me">
                         Remember Me
@@ -191,4 +191,20 @@
 
     <% include ../partialA/script %>
   </body>
+  <script src="/vendor/jQuery/jquery.min.js"></script>
+  <script src="/javascripts/js.cookie.min.js"></script>
+  <script>
+    $("#rememberMe").click(() => {
+      if ($("#rememberMe").is(":checked")) {
+        Cookies.set("email", $("#email").val());
+      } else {
+        Cookies.remove("email");
+      }
+    });
+    console.log(Cookies.get("email"));
+    if (Cookies.get("email")) {
+      $("#email").val(Cookies.get("email"));
+      $("#rememberMe").prop("checked", true);
+    }
+  </script>
 </html>
