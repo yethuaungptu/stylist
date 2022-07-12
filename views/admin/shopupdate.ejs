@@ -42,14 +42,19 @@
                         <div
                           class="card-header d-flex justify-content-between align-items-center"
                         >
-                          <h5 class="mb-0">Shop Add</h5>
+                          <h5 class="mb-0">Shop Update</h5>
                         </div>
                         <div class="card-body">
                           <form
-                            action="/admin/shopadd"
+                            action="/admin/shopupdate"
                             method="post"
                             enctype="multipart/form-data"
                           >
+                            <input
+                              type="hidden"
+                              name="uid"
+                              value="<%= shop._id %>"
+                            />
                             <div class="mb-3">
                               <label
                                 class="form-label"
@@ -66,7 +71,7 @@
                                   type="text"
                                   class="form-control"
                                   id="basic-icon-default-fullname"
-                                  placeholder="Shop Name"
+                                  value="<%= shop.name %>"
                                   aria-label="Shop Name"
                                   name="name"
                                   aria-describedby="basic-icon-default-fullname2"
@@ -89,7 +94,7 @@
                                   type="text"
                                   id="basic-icon-default-company"
                                   class="form-control"
-                                  placeholder="Address"
+                                  value="<%= shop.address %>"
                                   aria-label="Address"
                                   name="address"
                                   aria-describedby="basic-icon-default-company2"
@@ -112,7 +117,7 @@
                                   type="text"
                                   id="basic-icon-default-phone"
                                   class="form-control phone-mask"
-                                  placeholder="658 799 8941"
+                                  value="<%= shop.phone %>"
                                   aria-label="658 799 8941"
                                   name="phone"
                                   aria-describedby="basic-icon-default-phone2"
@@ -121,26 +126,32 @@
                             </div>
                             <div class="mb-3">
                               <label for="formFile" class="form-label"
-                                >Profile Image</label
+                                >Profile Image
+                                <small
+                                  >( If you don't update this, don't upload here
+                                  )</small
+                                ></label
                               >
                               <input
                                 class="form-control"
                                 type="file"
                                 id="formFile"
                                 name="profile"
-                                required
                               />
                             </div>
                             <div class="mb-3">
                               <label for="formFile" class="form-label"
-                                >Background Image</label
+                                >Background Image
+                                <small
+                                  >( If you don't update this, don't upload here
+                                  )</small
+                                ></label
                               >
                               <input
                                 class="form-control"
                                 type="file"
                                 id="formFile"
                                 name="background"
-                                required
                               />
                             </div>
                             <button type="submit" class="btn btn-primary">

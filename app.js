@@ -34,6 +34,7 @@ app.use(
 );
 
 app.use(function (req, res, next) {
+  res.locals.admin = req.session.admin;
   res.locals.user = req.session.user;
   next();
 });

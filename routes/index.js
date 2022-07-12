@@ -83,7 +83,12 @@ router.get("/men", (req, res) => {
     .sort({ created: -1 })
     .exec((err, rtn) => {
       if (err) throw err;
-      res.render("men", { blogs: rtn });
+      Category.find({ isDeleted: "0" })
+        .select("_id name")
+        .exec((err2, rtn2) => {
+          if (err2) throw err2;
+          res.render("men", { blogs: rtn, collections: rtn2 });
+        });
     });
 });
 
@@ -93,7 +98,12 @@ router.get("/women", (req, res) => {
     .sort({ created: -1 })
     .exec((err, rtn) => {
       if (err) throw err;
-      res.render("women", { blogs: rtn });
+      Category.find({ isDeleted: "0" })
+        .select("_id name")
+        .exec((err2, rtn2) => {
+          if (err2) throw err2;
+          res.render("women", { blogs: rtn, collections: rtn2 });
+        });
     });
 });
 
@@ -103,7 +113,12 @@ router.get("/kids", (req, res) => {
     .sort({ created: -1 })
     .exec((err, rtn) => {
       if (err) throw err;
-      res.render("kid", { blogs: rtn });
+      Category.find({ isDeleted: "0" })
+        .select("_id name")
+        .exec((err2, rtn2) => {
+          if (err2) throw err2;
+          res.render("kid", { blogs: rtn, collections: rtn2 });
+        });
     });
 });
 
@@ -219,7 +234,11 @@ router.post("/login", (req, res) => {
     (err, rtn) => {
       console.log(rtn);
       if (err) throw err;
-      if (rtn != null && User.compare(req.body.password, rtn.password)) {
+      if (
+        rtn != null &&
+        User.compare(req.body.password, rtn.password) &&
+        rtn.isDeleted == "0"
+      ) {
         req.session.user = { id: rtn._id, name: rtn.name, email: rtn.email };
         res.redirect("/");
       } else {

@@ -46,6 +46,7 @@
                           <th>Address</th>
                           <th>Profile</th>
                           <th>Background</th>
+                          <th>Action</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -71,10 +72,66 @@
                               alt=""
                             />
                           </td>
+                          <td>
+                            <a
+                              class="btn btn-warning me-2"
+                              href="/admin/shopupdate/<%= shops[i]._id %>"
+                              >Modify</a
+                            ><button
+                              class="btn btn-danger"
+                              onclick="deleteShop('<%= shops[i]._id %>')"
+                            >
+                              Delete
+                            </button>
+                          </td>
                         </tr>
                         <%}%>
                       </tbody>
                     </table>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="modal fade"
+                id="smallModal"
+                tabindex="-1"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog modal-sm" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel2">
+                        Delete Category
+                      </h5>
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      ></button>
+                    </div>
+                    <div class="modal-body">
+                      <input type="hidden" name="did" id="did" />
+                      <div class="row">
+                        <h3>Are you sure for delete?</h3>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn btn-outline-secondary"
+                        data-bs-dismiss="modal"
+                      >
+                        Close
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-danger"
+                        id="deleteAny"
+                      >
+                        Delete Anyway
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -97,4 +154,26 @@
 
     <% include ../partialA/script %>
   </body>
+  <script>
+    $modal2 = $("#smallModal");
+    function deleteShop(id) {
+      $("#did").val(id);
+      $modal2.modal("show");
+    }
+    $("#deleteAny").click(() => {
+      $modal2.modal("hide");
+      $.ajax("/admin/shopdelete", {
+        method: "POST",
+        data: { id: $("#did").val() },
+        success: function (result) {
+          console.log(result);
+          if (result.status == "done") {
+            location.reload();
+          } else {
+            alert("Something was wrong, please check your fields");
+          }
+        },
+      });
+    });
+  </script>
 </html>

@@ -53,15 +53,15 @@
                   <div class="form-check-inline">
                     <input
                       type="checkbox"
-                      name=""
-                      id=""
+                      name="rememberMe"
+                      id="rememberMe"
                       class="form-check-input"
                     />
                     <label for="" class="form-check-label">Remember Me</label>
                   </div>
-                  <label for="" class="login-forget float-end"
+                  <!-- <label for="" class="login-forget float-end"
                     ><a href="" class="anone">Forget Password?</a></label
-                  >
+                  > -->
                 </div>
                 <div class="text-center col-12 col-md-7 mt-4">
                   <button
@@ -83,4 +83,20 @@
       </div>
     </div>
   </body>
+  <script src="/vendor/jQuery/jquery.min.js"></script>
+  <script src="/javascripts/js.cookie.min.js"></script>
+  <script>
+    $("#rememberMe").click(() => {
+      if ($("#rememberMe").is(":checked")) {
+        Cookies.set("contact", $("#contact").val());
+      } else {
+        Cookies.remove("contact");
+      }
+    });
+    console.log(Cookies.get("contact"));
+    if (Cookies.get("contact")) {
+      $("#contact").val(Cookies.get("contact"));
+      $("#rememberMe").prop("checked", true);
+    }
+  </script>
 </html>

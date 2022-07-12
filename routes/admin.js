@@ -110,9 +110,73 @@ router.post("/shopadd", cpUpload, auth, (req, res) => {
 });
 
 router.get("/shoplist", auth, (req, res) => {
-  Shop.find((err, rtn) => {
+  Shop.find({ isDeleted: "0" }, (err, rtn) => {
     if (err) throw err;
     res.render("admin/shoplist", { shops: rtn });
+  });
+});
+
+router.get("/shopupdate/:id", auth, (req, res) => {
+  Shop.findById(req.params.id, (err, rtn) => {
+    if (err) throw err;
+    res.render("admin/shopupdate", { shop: rtn });
+  });
+});
+
+router.post("/shopupdate", cpUpload, auth, (req, res) => {
+  Shop.findById(req.body.uid)
+    .select("pfUrl bgUrl")
+    .exec((err, rtn) => {
+      if (err) throw err;
+      const path = "public/";
+      let update = {
+        name: req.body.name,
+        address: req.body.address,
+        phone: req.body.phone,
+        updatedBy: req.session.admin.id,
+        updated: Date.now(),
+      };
+      if (req.files.profile) {
+        try {
+          fs.unlinkSync(path + rtn.pfUrl);
+          update.pfUrl = "/images/uploads/" + req.files.profile[0].filename;
+        } catch (error) {
+          console.log("Image delete error");
+        }
+      }
+      if (req.files.background) {
+        try {
+          fs.unlinkSync(path + rtn.bgUrl);
+          update.bgUrl = "/images/uploads/" + req.files.background[0].filename;
+        } catch (error) {
+          console.log("Image delete error");
+        }
+      }
+      console.log(update);
+      Shop.findByIdAndUpdate(req.body.uid, { $set: update }, (err2, rtn2) => {
+        if (err2) throw err2;
+        res.redirect("/admin/shoplist");
+      });
+    });
+});
+
+router.post("/shopdelete", auth, (req, res) => {
+  const update = {
+    isDeleted: "1",
+    updatedBy: req.session.admin.id,
+    updated: Date.now(),
+  };
+  Shop.findByIdAndUpdate(req.body.id, { $set: update }, (err, rtn) => {
+    if (err) {
+      res.json({
+        status: "error",
+      });
+    } else {
+      console.log(rtn);
+      res.json({
+        status: "done",
+      });
+    }
   });
 });
 
@@ -334,10 +398,27 @@ router.post("/blogdelete", auth, (req, res) => {
 });
 
 router.get("/users", auth, (req, res) => {
-  User.find({ isDeleted: "0" }, (err, rtn) => {
+  User.find((err, rtn) => {
     if (err) throw err;
     res.render("admin/user-list", { users: rtn });
   });
+});
+router.post("/changeuser", auth, (req, res) => {
+  User.findByIdAndUpdate(
+    req.body.id,
+    { $set: { isDeleted: req.body.status } },
+    (err, rtn) => {
+      if (err) {
+        res.json({
+          status: "error",
+        });
+      } else {
+        res.json({
+          status: "done",
+        });
+      }
+    }
+  );
 });
 
 module.exports = router;

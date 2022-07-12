@@ -46,6 +46,7 @@
                           <th>Age Arrange</th>
                           <th>Gender</th>
                           <th>BMI</th>
+                          <th>Actions</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -57,6 +58,23 @@
                           <td><%= users[i].ageArrange %></td>
                           <td><%= users[i].gender %></td>
                           <td><%= users[i].bmi %></td>
+                          <td>
+                            <% if(users[i].isDeleted == "0"){%>
+                            <button
+                              class="btn btn-danger"
+                              onclick="changeSts('<%= users[i]._id %>','1')"
+                            >
+                              Block User
+                            </button>
+                            <%}else{%>
+                            <button
+                              class="btn btn-success"
+                              onclick="changeSts('<%= users[i]._id %>','0')"
+                            >
+                              Unblock User
+                            </button>
+                            <%}%>
+                          </td>
                         </tr>
                         <%}%>
                       </tbody>
@@ -83,4 +101,20 @@
 
     <% include ../partialA/script %>
   </body>
+  <script>
+    function changeSts(id, status) {
+      console.log(id, status);
+      $.ajax("/admin/changeuser", {
+        method: "POST",
+        data: { id: id, status: status },
+        success: function (result) {
+          if (result.status == "done") {
+            location.reload();
+          } else {
+            alert("Something was wrong, please check your fields");
+          }
+        },
+      });
+    }
+  </script>
 </html>
