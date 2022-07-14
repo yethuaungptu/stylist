@@ -52,39 +52,65 @@
                         </div>
                       </div>
                     </div>
-                    <div class="row mt-2">
-                      <div class="col-sm-3 col-lg-2">
-                        <div class="card bg-primary text-white text-center p-1">
-                          <div><%= blog.shopId.name %></div>
+
+                    <div class="row mt-4">
+                      <div class="col-lg-6">
+                        <small class="text-light fw-semibold"
+                          >Shop / Collection / Age arrange</small
+                        >
+                        <div class="demo-inline-spacing mt-3">
+                          <ul class="list-group">
+                            <li
+                              class="list-group-item d-flex align-items-center"
+                            >
+                              <i class="bx bxs-store me-2"></i>
+                              <%= blog.shopId.name %>
+                            </li>
+                            <li
+                              class="list-group-item d-flex align-items-center"
+                            >
+                              <i class="bx bx-collection me-2"></i>
+                              <%= blog.categoryId.name %>
+                            </li>
+                            <li
+                              class="list-group-item d-flex align-items-center"
+                            >
+                              <i class="bx bxs-group me-2"></i>
+                              <%= blog.ageArrange.charAt(0).toUpperCase() +
+                              blog.ageArrange.slice(1)%>
+                            </li>
+                          </ul>
                         </div>
                       </div>
-                      <div class="col-sm-3 col-lg-2">
-                        <div class="card bg-primary text-white text-center p-1">
-                          <div><%= blog.categoryId.name %></div>
-                        </div>
-                      </div>
-                      <div class="col-sm-3 col-lg-2">
-                        <div class="card bg-warning text-white text-center p-1">
-                          <div><%= blog.ageArrange %></div>
-                        </div>
-                      </div>
-                      <div class="col-sm-3 col-lg-2">
-                        <div class="card bg-warning text-white text-center p-1">
-                          <div><%= blog.bmi %></div>
-                        </div>
-                      </div>
-                      <div class="col-sm-3 col-lg-2">
-                        <div class="card bg-warning text-white text-center p-1">
-                          <div><%= blog.size %></div>
-                        </div>
-                      </div>
-                      <div class="col-sm-3 col-lg-2">
-                        <div class="card bg-warning text-white text-center p-1">
-                          <div><%= blog.gender %></div>
+                      <div class="col-lg-6">
+                        <small class="text-light fw-semibold"
+                          >BMI / Size / Gender</small
+                        >
+                        <div class="demo-inline-spacing mt-3">
+                          <ul class="list-group">
+                            <li
+                              class="list-group-item d-flex align-items-center"
+                            >
+                              <i class="bx bx-body me-2"></i>
+                              <%= blog.bmi %>
+                            </li>
+                            <li
+                              class="list-group-item d-flex align-items-center"
+                            >
+                              <i class="bx bx-closet me-2"></i>
+                              <%= blog.size.toUpperCase() %>
+                            </li>
+                            <li
+                              class="list-group-item d-flex align-items-center"
+                            >
+                              <i class="bx bx-bookmark-heart me-2"></i>
+                              <%= blog.gender.charAt(0).toUpperCase() +
+                              blog.gender.slice(1) %>
+                            </li>
+                          </ul>
                         </div>
                       </div>
                     </div>
-
                     <div class="row">
                       <!-- Bootstrap carousel -->
                       <div class="col-md-4"></div>
