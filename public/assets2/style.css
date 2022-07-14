@@ -12,6 +12,9 @@ ul {
 .pointer {
   cursor: pointer;
 }
+.shop-color{
+  color: #d8a985;
+}
 /* scroll */
 .scroll-up {
   position: fixed;
@@ -55,7 +58,7 @@ ul {
   z-index: 50;
 }
 .site-bg {
-  background-color: #d3a17e;
+  background-color: #d3a17e !important;
 }
 .nav-link {
   padding: 0.5rem 1.3rem !important;
