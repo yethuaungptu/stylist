@@ -201,11 +201,11 @@ router.post("/register", (req, res) => {
   let ageArrange;
   if (age < 13) {
     ageArrange = "kid";
-  } else if (age <= 13 && age < 19) {
+  } else if (age >= 13 && age < 19) {
     ageArrange = "teenager";
-  } else if (age <= 19 && age < 21) {
+  } else if (age >= 19 && age < 21) {
     ageArrange = "young";
-  } else if (age <= 21 && age < 39) {
+  } else if (age >= 21 && age < 39) {
     ageArrange = "adult";
   } else {
     ageArrange = "old";
@@ -318,11 +318,11 @@ router.post("/editmyprofile", auth, (req, res) => {
   let ageArrange;
   if (age < 13) {
     ageArrange = "kid";
-  } else if (age <= 13 && age < 19) {
+  } else if (age >= 13 && age < 19) {
     ageArrange = "teenager";
-  } else if (age <= 19 && age < 21) {
+  } else if (age >= 19 && age < 21) {
     ageArrange = "young";
-  } else if (age <= 21 && age < 39) {
+  } else if (age >= 21 && age < 39) {
     ageArrange = "adult";
   } else {
     ageArrange = "old";
